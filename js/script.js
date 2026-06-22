@@ -130,9 +130,51 @@ function renderPalette(animatedIndexes = new Set()) {
     `;
 
     paletteContainer.appendChild(card);
+    const previewArea = card.querySelector(".color-preview-area");
+    const lockButton = card.querySelector(".lock-btn");
+
+    previewArea.addEventListener("click", () => {
+      copyHexColor(hex);
+    });
+
+    previewArea.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        copyHexColor(hex);
+      }
+    });
+
+    lockButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      if (lockedColors[i]) {
+        lockedColors[i] = null;
+        showToast("Color desbloqueado");
+      } else {
+        lockedColors[i] = hex;
+        showToast("Color bloqueado");
+      }
+
+      renderPalette();
+    });
   }
 }
 
 setPaletteSize(currentPaletteSize);
 if (paletteContainer) generateNewPalette();
 
+function copyHexColor(hexColor) {
+  navigator.clipboard.writeText(hexColor);
+
+  showToast(`✓ ${hexColor} copiado correctamente`);
+}
+
+function showToast(message) {
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+}
