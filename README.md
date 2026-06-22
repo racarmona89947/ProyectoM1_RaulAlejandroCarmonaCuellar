@@ -1,0 +1,1 @@
+# Proyecto Integrador - Generador de Paletas
