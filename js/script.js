@@ -1,6 +1,9 @@
 const generateButton = document.getElementById("generate-btn");
 const savePaletteButton = document.getElementById("save-palette-btn");
 const generatorSection = document.getElementById("generador");
+const startButton = document.getElementById("start-btn");
+const introSection = document.getElementById("inicio");
+const savedSection = document.getElementById("guardadas");
 const paletteSizeButtons = document.querySelectorAll(".size-option");
 const paletteContainer = document.getElementById("palette-container");
 const savedPalettesContainer = document.getElementById("saved-palettes");
@@ -302,6 +305,10 @@ function scrollToSection(section) {
   });
 }
 
+if (generateButton) {
+    generateButton.addEventListener("click", generateNewPalette);
+}
+
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (event) => {
     const targetId = link.getAttribute("href").slice(1);
@@ -322,6 +329,24 @@ function copyHexColor(hexColor) {
   navigator.clipboard.writeText(hexColor);
 
   showToast(`✓ ${hexColor} copiado correctamente`);
+}
+
+if (startButton) {
+    startButton.addEventListener("click", () => {
+        scrollToSection(generatorSection);
+    });
+}
+
+if (introSection) {
+    introSection.setAttribute("tabindex", "-1");
+}
+
+if (generatorSection) {
+    generatorSection.setAttribute("tabindex", "-1");
+}
+
+if (savedSection) {
+    savedSection.setAttribute("tabindex", "-1");
 }
 
 function showToast(message) {
