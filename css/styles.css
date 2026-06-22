@@ -266,3 +266,107 @@ button:hover {
     justify-content: center;
 }
 
+.palette-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.25rem;
+}
+
+#palette-container {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 7.25rem), 1fr));
+    padding: 0.8rem 0 0.6rem;
+}
+
+.color-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid hsl(220deg 20% 88% / 0.9);
+    border-radius: 1rem;
+    background: var(--surface-color);
+    box-shadow: 0 8px 18px hsl(225deg 35% 20% / 0.06);
+    animation: cardEntrance 0.45s ease forwards;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.color-card:hover {
+    transform: translateY(-5px);
+    border-color: hsl(244deg 82% 82%);
+    box-shadow: 0 12px 24px hsl(225deg 35% 20% / 0.1);
+}
+
+/*  */
+.color-card.no-animation, .color-card.no-animation .color-preview {
+    animation: none;
+}
+
+.color-preview-area {
+    position: relative;
+    cursor: pointer;
+}
+
+.color-preview {
+    width: 100%;
+    height: clamp(150px, 14vw, 190px);
+    animation: colorReveal 0.35s ease;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.color-card:hover .color-preview {
+    transform: scale(1.03);
+    filter: saturate(1.08) contrast(1.02);
+}
+
+.lock-btn {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: 0;
+    border: 1px solid hsl(220deg 20% 88% / 0.9);
+    border-radius: 999px;
+    background: hsl(0deg 0% 100% / 0.92);
+    color: var(--text-color);
+    box-shadow: 0 8px 18px hsl(225deg 35% 20% / 0.16);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    z-index: 2;
+}
+
+.lock-btn:hover {
+    background: hsl(0deg 0% 100% / 0.98);
+    box-shadow: 0 10px 20px hsl(225deg 35% 20% / 0.18);
+}
+
+.color-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: var(--space-md);
+}
+
+.color-info p:first-child {
+    margin-bottom: 0;
+    color: var(--text-color);
+    font-size: 1.02rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.color-info p:last-child {
+    margin-bottom: 0;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+}
+
+.color-card:hover .color-preview {
+    transform: scale(1.03);
+    filter: saturate(1.08) contrast(1.02);
+}
+
+.color-card:focus-within {
+    outline: 3px solid var(--primary-soft);
+    outline-offset: 3px;
+}
