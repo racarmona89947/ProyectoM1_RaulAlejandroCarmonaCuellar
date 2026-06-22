@@ -175,6 +175,50 @@ function setPaletteSize(totalColors) {
     });
 }
 
+function saveCurrentPalette() {
+    const colors = [];
+
+    paletteContainer.querySelectorAll(".hex-code").forEach((element) => {
+        colors.push(element.textContent);
+    });
+
+    const savedPalettes = JSON.parse(localStorage.getItem("savedPalettes")) || [];
+
+    const alreadyExists = savedPalettes.some(
+        (palette) => JSON.stringify(palette) === JSON.stringify(colors)
+    );
+
+    if (alreadyExists) {
+        showToast("Esta paleta ya está guardada");
+        return;
+    }
+
+    savedPalettes.push(colors);
+
+    localStorage.setItem("savedPalettes", JSON.stringify(savedPalettes));
+
+    showToast("✓ Paleta guardada correctamente");
+
+    renderSavedPalettes();
+}
+
+if (savePaletteButton) {
+    savePaletteButton.addEventListener("click", saveCurrentPalette);
+}
+
+if (paletteSizeButtons.length > 0) {
+    paletteSizeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const selectedSize = Number(button.dataset.size);
+
+            if (selectedSize === currentPaletteSize) return;
+
+            setPaletteSize(selectedSize);
+            renderPalette();
+        });
+    });
+}
+
 setPaletteSize(currentPaletteSize);
 if (paletteContainer) generateNewPalette();
 
