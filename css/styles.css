@@ -142,3 +142,44 @@ button, a {
     outline: 3px solid var(--primary-soft);
     outline-offset: 3px;
 }
+
+button {
+    cursor: pointer;
+    padding: 0.9rem 1.35rem;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: #ffffff;
+    font: bold 1rem var(--font-heading);
+    box-shadow: 0 12px 24px hsl(244deg 82% 60% / 0.24);
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.98;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 28px hsl(244deg 82% 60% / 0.3);
+}
+
+#inicio {
+    text-align: center;
+    padding: 3.25rem 1.5rem;
+    background:
+        radial-gradient(circle at top, var(--primary-soft), transparent 62%),
+        linear-gradient(180deg, hsl(0deg 0% 100% / 0.95), hsl(0deg 0% 100% / 0.7));
+}
+
+#inicio h2 {
+    max-width: 18ch;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.04em;
+}
+
+#inicio p {
+    max-width: 65ch;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.03rem;
+}
