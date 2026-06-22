@@ -115,18 +115,32 @@ function renderPalette(animatedIndexes = new Set()) {
     }
 
     card.innerHTML = `
-      <div class="color-preview-area" role="button" tabindex="0" aria-label="Copiar ${hex}">
-          <div class="color-preview" style="background-color: ${hex};"></div>
+        <div
+            class="color-preview-area"
+            role="button"
+            tabindex="0"
+            aria-label="Copiar ${hex}"
+        >
+            <div
+                class="color-preview"
+                style="background-color: ${hex};"
+                aria-hidden="true"
+            ></div>
 
-          <button class="lock-btn" type="button" aria-label="${isLocked ? "Desbloquear color" : "Bloquear color"}">
-              ${isLocked ? "🔒" : "🔓"}
-          </button>
-      </div>
+            <button
+                class="lock-btn"
+                type="button"
+                aria-label="${isLocked ? "Desbloquear color" : "Bloquear color"}"
+                title="${isLocked ? "Desbloquear" : "Bloquear"}"
+            >
+                ${isLocked ? "🔒" : "🔓"}
+            </button>
+        </div>
 
-      <div class="color-info">
-          <p class="hex-code">${hex}</p>
-          <p>${hsl}</p>
-      </div>
+        <div class="color-info">
+            <p class="hex-code">${hex}</p>
+            <p>${hsl}</p>
+        </div>
     `;
 
     paletteContainer.appendChild(card);
@@ -240,7 +254,7 @@ function renderSavedPalettes() {
     const preview = palette
       .map(
         (color) =>
-          `<span class="saved-preview-swatch" style="background-color: ${color};"></span>`
+          `<span class="saved-preview-swatch" style="background-color: ${color};" aria-hidden="true"></span>`
       )
       .join("");
 
