@@ -40,3 +40,68 @@ body {
         radial-gradient(circle at top left, var(--primary-soft), transparent 30%),
         linear-gradient(180deg, #ffffff, var(--background-color));
 }
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: hsl(0deg 0% 100% / 0.82);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid hsl(220deg 20% 90% / 0.8);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 1rem clamp(1.25rem, 5vw, 4rem);
+}
+
+.brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.brand-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 18px hsl(225deg 35% 20% / 0.14);
+}
+
+nav h1 {
+    margin-bottom: 0;
+    font-size: 1.7rem;
+    letter-spacing: -0.04em;
+    color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+nav ul a {
+    display: inline-flex;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+nav ul a:hover {
+    color: var(--primary-color);
+    background: var(--primary-soft);
+    transform: translateY(-1px);
+}
