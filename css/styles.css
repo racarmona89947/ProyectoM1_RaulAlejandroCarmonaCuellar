@@ -370,3 +370,67 @@ button:hover {
     outline: 3px solid var(--primary-soft);
     outline-offset: 3px;
 }
+
+.saved-palettes {
+    margin-top: var(--space-lg);
+}
+
+.saved-palette-card {
+    min-height: 100%;
+}
+
+.saved-palette-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    min-height: 5rem;
+    overflow: hidden;
+}
+
+.saved-preview-swatch {
+    min-height: 5rem;
+}
+
+.saved-palette-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: var(--space-md);
+}
+
+.saved-palette-title {
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.saved-palette-meta {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    word-break: break-word;
+}
+
+.delete-palette-btn {
+    width: 100%;
+    margin-top: 0.75rem;
+    padding: 0.7rem;
+    border: 1px solid #dc2626;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: #dc2626;
+    box-shadow: none;
+}
+
+.delete-palette-btn:hover {
+    background: #dc2626;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.empty-message {
+    padding: 2rem;
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    background: hsl(0deg 0% 100% / 0.58);
+    color: var(--text-soft);
+    text-align: center;
+}
