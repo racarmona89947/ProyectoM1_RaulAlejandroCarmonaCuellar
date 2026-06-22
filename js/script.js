@@ -280,24 +280,24 @@ function deleteSavedPalette(index) {
 }
 
 function scrollToSection(section) {
-    if (!section) return;
+  if (!section) return;
 
-    section.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-    });
+  section.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
 }
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (event) => {
-        const targetId = link.getAttribute("href").slice(1);
-        const targetSection = document.getElementById(targetId);
+  link.addEventListener("click", (event) => {
+    const targetId = link.getAttribute("href").slice(1);
+    const targetSection = document.getElementById(targetId);
 
-        if (!targetSection) return;
+    if (!targetSection) return;
 
-        event.preventDefault();
-        scrollToSection(targetSection);
-    });
+    event.preventDefault();
+    scrollToSection(targetSection);
+  });
 });
 
 setPaletteSize(currentPaletteSize);
