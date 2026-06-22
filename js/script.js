@@ -160,6 +160,21 @@ function renderPalette(animatedIndexes = new Set()) {
   }
 }
 
+function setPaletteSize(totalColors) {
+    if (!allowedPaletteSizes.includes(totalColors)) return;
+
+    currentPaletteSize = totalColors;
+
+    ensurePaletteSize(totalColors);
+
+    paletteSizeButtons.forEach((button) => {
+        const isSelected = Number(button.dataset.size) === totalColors;
+
+        button.classList.toggle("is-active", isSelected);
+        button.setAttribute("aria-pressed", String(isSelected));
+    });
+}
+
 setPaletteSize(currentPaletteSize);
 if (paletteContainer) generateNewPalette();
 
