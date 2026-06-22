@@ -673,3 +673,15 @@ footer {
         font-size: 0.8rem;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .color-card,
+    .color-preview {
+        animation: none;
+        transition: none;
+    }
+}
