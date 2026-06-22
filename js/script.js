@@ -161,66 +161,127 @@ function renderPalette(animatedIndexes = new Set()) {
 }
 
 function setPaletteSize(totalColors) {
-    if (!allowedPaletteSizes.includes(totalColors)) return;
+  if (!allowedPaletteSizes.includes(totalColors)) return;
 
-    currentPaletteSize = totalColors;
+  currentPaletteSize = totalColors;
 
-    ensurePaletteSize(totalColors);
+  ensurePaletteSize(totalColors);
 
-    paletteSizeButtons.forEach((button) => {
-        const isSelected = Number(button.dataset.size) === totalColors;
+  paletteSizeButtons.forEach((button) => {
+    const isSelected = Number(button.dataset.size) === totalColors;
 
-        button.classList.toggle("is-active", isSelected);
-        button.setAttribute("aria-pressed", String(isSelected));
-    });
+    button.classList.toggle("is-active", isSelected);
+    button.setAttribute("aria-pressed", String(isSelected));
+  });
 }
 
 function saveCurrentPalette() {
-    const colors = [];
+  const colors = [];
 
-    paletteContainer.querySelectorAll(".hex-code").forEach((element) => {
-        colors.push(element.textContent);
-    });
+  paletteContainer.querySelectorAll(".hex-code").forEach((element) => {
+    colors.push(element.textContent);
+  });
 
-    const savedPalettes = JSON.parse(localStorage.getItem("savedPalettes")) || [];
+  const savedPalettes = JSON.parse(localStorage.getItem("savedPalettes")) || [];
 
-    const alreadyExists = savedPalettes.some(
-        (palette) => JSON.stringify(palette) === JSON.stringify(colors)
-    );
+  const alreadyExists = savedPalettes.some(
+    (palette) => JSON.stringify(palette) === JSON.stringify(colors)
+  );
 
-    if (alreadyExists) {
-        showToast("Esta paleta ya está guardada");
-        return;
-    }
+  if (alreadyExists) {
+    showToast("Esta paleta ya está guardada");
+    return;
+  }
 
-    savedPalettes.push(colors);
+  savedPalettes.push(colors);
 
-    localStorage.setItem("savedPalettes", JSON.stringify(savedPalettes));
+  localStorage.setItem("savedPalettes", JSON.stringify(savedPalettes));
 
-    showToast("✓ Paleta guardada correctamente");
+  showToast("✓ Paleta guardada correctamente");
 
-    renderSavedPalettes();
+  renderSavedPalettes();
 }
 
 if (savePaletteButton) {
-    savePaletteButton.addEventListener("click", saveCurrentPalette);
+  savePaletteButton.addEventListener("click", saveCurrentPalette);
 }
 
 if (paletteSizeButtons.length > 0) {
-    paletteSizeButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const selectedSize = Number(button.dataset.size);
+  paletteSizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedSize = Number(button.dataset.size);
 
-            if (selectedSize === currentPaletteSize) return;
+      if (selectedSize === currentPaletteSize) return;
 
-            setPaletteSize(selectedSize);
-            renderPalette();
-        });
+      setPaletteSize(selectedSize);
+      renderPalette();
     });
+  });
+}
+
+function renderSavedPalettes() {
+  savedPalettesContainer.innerHTML = "";
+
+  const savedPalettes = JSON.parse(localStorage.getItem("savedPalettes")) || [];
+
+  if (savedPalettes.length === 0) {
+    savedPalettesContainer.innerHTML = `
+            <article class="empty-message">
+                Aún no hay paletas guardadas.
+            </article>
+        `;
+    return;
+  }
+
+  savedPalettes.forEach((palette, index) => {
+    const card = document.createElement("article");
+    card.className = "color-card saved-palette-card";
+
+    const preview = palette
+      .map(
+        (color) =>
+          `<span class="saved-preview-swatch" style="background-color: ${color};"></span>`
+      )
+      .join("");
+
+    card.innerHTML = `
+            <div class="saved-palette-preview">${preview}</div>
+
+            <div class="saved-palette-info">
+                <p class="saved-palette-title">Paleta guardada</p>
+                <p class="saved-palette-meta">${palette.join(" · ")}</p>
+
+                <button class="delete-palette-btn" type="button">
+                    Eliminar
+                </button>
+            </div>
+        `;
+
+    savedPalettesContainer.appendChild(card);
+
+    const deleteButton = card.querySelector(".delete-palette-btn");
+
+    deleteButton.addEventListener("click", () => {
+      deleteSavedPalette(index);
+    });
+  });
+}
+
+function deleteSavedPalette(index) {
+  const savedPalettes = JSON.parse(localStorage.getItem("savedPalettes")) || [];
+
+  savedPalettes.splice(index, 1);
+
+  localStorage.setItem("savedPalettes", JSON.stringify(savedPalettes));
+
+  renderSavedPalettes();
+
+  showToast("✓ Paleta eliminada");
 }
 
 setPaletteSize(currentPaletteSize);
 if (paletteContainer) generateNewPalette();
+if (savedPalettesContainer) renderSavedPalettes();
 
 function copyHexColor(hexColor) {
   navigator.clipboard.writeText(hexColor);
@@ -229,11 +290,11 @@ function copyHexColor(hexColor) {
 }
 
 function showToast(message) {
-    toast.textContent = message;
+  toast.textContent = message;
 
-    toast.classList.add("show");
+  toast.classList.add("show");
 
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2500);
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
 }
