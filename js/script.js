@@ -76,3 +76,63 @@ function ensurePaletteSize(totalColors) {
     currentPalette.push(generateHexColor());
   }
 }
+
+function generateNewPalette() {
+  ensurePaletteSize(currentPaletteSize);
+
+  const animatedIndexes = new Set();
+
+  currentPalette = currentPalette.map((color, index) => {
+    if (lockedColors[index]) return color;
+
+    if (index < currentPaletteSize) {
+      animatedIndexes.add(index);
+    }
+
+    return generateHexColor();
+  });
+
+  renderPalette(animatedIndexes);
+}
+
+function renderPalette(animatedIndexes = new Set()) {
+  paletteContainer.innerHTML = "";
+
+  const totalColors = currentPaletteSize;
+  ensurePaletteSize(totalColors);
+
+  for (let i = 0; i < totalColors; i++) {
+    const hex = currentPalette[i];
+    const hsl = hexToHsl(hex);
+    const isLocked = Boolean(lockedColors[i]);
+    const shouldAnimate = animatedIndexes.has(i);
+
+    const card = document.createElement("article");
+    card.className = shouldAnimate ? "color-card" : "color-card no-animation";
+
+    if (shouldAnimate) {
+      card.style.animationDelay = `${i * 80}ms`;
+    }
+
+    card.innerHTML = `
+      <div class="color-preview-area" role="button" tabindex="0" aria-label="Copiar ${hex}">
+          <div class="color-preview" style="background-color: ${hex};"></div>
+
+          <button class="lock-btn" type="button" aria-label="${isLocked ? "Desbloquear color" : "Bloquear color"}">
+              ${isLocked ? "🔒" : "🔓"}
+          </button>
+      </div>
+
+      <div class="color-info">
+          <p class="hex-code">${hex}</p>
+          <p>${hsl}</p>
+      </div>
+    `;
+
+    paletteContainer.appendChild(card);
+  }
+}
+
+setPaletteSize(currentPaletteSize);
+if (paletteContainer) generateNewPalette();
+
