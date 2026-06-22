@@ -183,3 +183,86 @@ button:hover {
     margin-right: auto;
     font-size: 1.03rem;
 }
+
+.generator-controls, .palette-container {
+    margin-top: var(--space-lg);
+}
+
+.generator-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: var(--surface-alt);
+}
+
+.control-group {
+    display: flex;
+    flex: 1 1 420px;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.control-label {
+    font-weight: 700;
+}
+
+.size-options {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.size-option {
+    flex: 0 0 auto;
+    min-width: 2.45rem;
+    padding: 0.55rem 0.72rem;
+    border-radius: 0.6rem;
+    border: 1px solid var(--border-color);
+    background: var(--surface-color);
+    color: var(--text-color);
+    box-shadow: 0 6px 12px hsl(220deg 25% 20% / 0.05);
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.size-option:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 18px hsl(220deg 25% 20% / 0.08);
+}
+
+.size-option.is-active {
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: #ffffff;
+    box-shadow: 0 12px 24px hsl(244deg 82% 60% / 0.24);
+}
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.9rem;
+    margin-left: auto;
+    flex: 0 0 auto;
+}
+
+.action-buttons #generate-btn {
+    min-width: 12rem;
+}
+
+.action-buttons #save-palette-btn {
+    width: 3rem;
+    min-width: 3rem;
+    padding-inline: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
