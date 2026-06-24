@@ -690,11 +690,11 @@ He analizado en profundidad la estructura HTML y CSS existente antes de proponer
 
 Quiero que actúes como un desarrollador con experiencia en proyectos open source y documentación técnica.
 
-Necesito que analices toda la información de mi proyecto y propongas una estructura completa y profesional para el archivo README.md...
+Necesito que analices toda la información de mi proyecto y propongas una estructura completa y profesional para el archivo README.md.
 
 ### Respuesta (IA)
 
-Perfecto, ya revisé la estructura general de tu proyecto Colorfly Studio...
+Perfecto, ya revisé la estructura general de tu proyecto Colorfly Studio.
 
 (Contenido organizado en secciones y con Markdown consistente.)
 

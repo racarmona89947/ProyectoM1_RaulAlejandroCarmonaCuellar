@@ -24,23 +24,47 @@ Incluye:
 
 ### Flujo principal de la app
 
-- Captura 1: `docs/capturas-flujo-principal-app/1.png`
-- Captura 2: `docs/capturas-flujo-principal-app/2.png`
-- Captura 3: `docs/capturas-flujo-principal-app/3.png`
-- Captura 4: `docs/capturas-flujo-principal-app/4.png`
-- GIF del flujo: `docs/capturas-flujo-principal-app/flujo.gif`
+- Captura 1: 
+![Captura](docs/capturas-flujo-principal-app/1.png)
+
+- Captura 2: 
+![Captura](docs/capturas-flujo-principal-app/2.png)
+
+- Captura 3: 
+![Captura](docs/capturas-flujo-principal-app/3.png)
+
+- Captura 4: 
+![Captura](docs/capturas-flujo-principal-app/4.png)
+
+- GIF del flujo:
+
+  ![GIF](docs/capturas-flujo-principal-app/flujo.gif)
+
 
 ### IA / prompts (documentación)
 
-- Ejemplo prompt: `docs/capturas-ia-respuestas/ejemplo prompt.png`
-- Capturas de prompts:
-  - `docs/capturas-ia-respuestas/prompt 1.png`
-  - `docs/capturas-ia-respuestas/prompt 2.png`
-  - `docs/capturas-ia-respuestas/prompt 3.png`
-  - `docs/capturas-ia-respuestas/prompt 4.png`
-  - `docs/capturas-ia-respuestas/prompt 5.png`
-  - `docs/capturas-ia-respuestas/prompt 6.png`
-- Archivo con prompts usados (agente + chat): `docs/capturas-ia-respuestas/prompts-usados.md`
+---
+
+- Archivo con prompts usados (agente + chat): [ia-docs.md](ia-docs.md)
+
+---
+
+- Ejemplo prompt: 
+  
+  ![ejemplo prompt](docs/capturas-ia-respuestas/ejemplo%20prompt.png)
+- Capturas de respuestas prompts:
+  
+  ![respuestas prompt](docs/capturas-ia-respuestas//prompt%201.png)
+
+  ![respuestas prompt](docs/capturas-ia-respuestas/prompt%202.png)
+
+  ![respuestas prompt](docs/capturas-ia-respuestas/prompt%203.png)
+
+  ![respuestas prompt](docs/capturas-ia-respuestas/prompt%204.png)
+
+  ![respuestas prompt](docs/capturas-ia-respuestas/prompt%205.png)
+
+  ![respuestas prompt](docs/capturas-ia-respuestas/prompt%206.png)
 
 ---
 
@@ -132,9 +156,8 @@ ProyectoM1_RaulAlejandroCarmonaCuellar/
 │       ├── prompt 3.png
 │       ├── prompt 4.png
 │       ├── prompt 5.png
-│       ├── prompt 6.png
-│       └── prompts-usados.md
-
+│       └── prompt 6.png
+├── ia-docs.md
 ├── index.html
 └── README.md
 ```
@@ -145,6 +168,8 @@ ProyectoM1_RaulAlejandroCarmonaCuellar/
 
 ```bash
 git clone https://github.com/racarmona89947/ProyectoM1_RaulAlejandroCarmonaCuellar.git
+```
+```bash
 cd ProyectoM1_RaulAlejandroCarmonaCuellar
 ```
 
